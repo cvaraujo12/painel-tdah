@@ -1,0 +1,56 @@
+# Este é um arquivo de configuração para o Supabase CLI
+# Documentação: https://supabase.com/docs/guides/cli/config
+
+project_id = "organizacao-pessoal-tdah"
+
+[api]
+# URL do seu projeto Supabase (será preenchido após criar o projeto)
+endpoint = "http://localhost:54321"
+# Chave anônima para desenvolvimento local
+anon_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
+
+[db]
+# Porta para o banco de dados local
+port = 54322
+# Tipo de banco de dados
+major_version = 15
+# String de conexão para desenvolvimento local
+connection_string = "postgresql://postgres:postgres@localhost:54322/postgres"
+
+[studio]
+# Porta para o Supabase Studio local
+port = 54323
+# Habilitar interface web do Studio
+enabled = true
+
+[inbucket]
+# Porta para o serviço de email local
+port = 54324
+# Habilitar serviço de email para testes
+enabled = true
+
+[storage]
+# Porta para o serviço de storage local
+port = 54325
+# Habilitar serviço de storage
+enabled = true
+
+[auth]
+# Porta para o serviço de autenticação local
+port = 54326
+# Configurações de JWT
+jwt_secret = "super-secret-jwt-token-with-at-least-32-characters-long"
+# Site URL para redirecionamentos de autenticação
+site_url = "http://localhost:3000"
+# URLs adicionais permitidas para redirecionamento
+additional_redirect_urls = ["https://localhost:3000"]
+# Habilitar auto-confirmação de email para desenvolvimento
+autoconfirm = true
+
+[analytics]
+# Desabilitar analytics em desenvolvimento
+enabled = false
+
+[telemetry]
+# Desabilitar telemetria em desenvolvimento
+enabled = false 

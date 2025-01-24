@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.accessibility-controls {
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--card-background);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 300px;
+}
+
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.control-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.font-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.font-controls button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.font-controls button:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Alto Contraste */
+.high-contrast {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --card-background: #1a1a1a;
+  --border-color: #ffffff;
+  --primary-color: #ffff00;
+  --success-color: #00ff00;
+  --warning-color: #ffa500;
+  --danger-color: #ff0000;
+}
+
+/* Redução de Movimento */
+.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Foco Visível */
+*:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.high-contrast *:focus {
+  outline-color: var(--warning-color);
+} 
