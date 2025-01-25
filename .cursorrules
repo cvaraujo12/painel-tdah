@@ -1,486 +1,192 @@
-Fill .plan and .progress files with relevant info after completing each step of the plan.
+{
+  "// Regras para auxiliar no desenvolvimento de um projeto web com React, Next.js, Redux, TypeScript, seguindo as melhores práticas e convenções.": true,
+  "// Utiliza as diretrizes para TDAH e os comandos do sistema especificados.": true,
 
-### Comandos do Sistema
-## Comandos Base
-1. `/c` - Comando de Verificação
-   - Confirma entendimento
-   - Verifica contexto
-   - Valida recursos
-   - Protocolo: /check_exec
+  "// Comandos do Sistema": true,
+  "// /c - Comando de Verificação": true,
+  "// Antes de executar qualquer ação, a IA deve confirmar o entendimento do comando, verificar o contexto atual e validar os recursos necessários.": true,
+  "// /up - Atualização Incremental": true,
+  "// A IA deve preservar a estrutura existente, adicionar novas informações, marcar atualizações com (⭐) e atualizar os arquivos .plan e .progress.": true,
+  "// /up --painel - Análise Completa": true,
+  "// A IA deve realizar uma análise estrutural do projeto, fornecer métricas e status, fazer recomendações e gerar um relatório detalhado.": true,
 
-2. `/up` - Atualização Incremental
-   - Preserva estrutura existente
-   - Adiciona novas informações
-   - Marca atualizações (⭐)
-   - Atualiza .plan e .progress
+  "// Integração de Comandos": true,
+  "// Todos os comandos seguem o protocolo TDAH, com documentação automática, tracking de progresso e validação de execução.": true,
 
-3. `/up --painel` - Análise Completa
-   - Análise estrutural do projeto
-   - Métricas e status
-   - Recomendações
-   - Relatório detalhado
+  "// Filosofia de Desenvolvimento": true,
+  "// Seguir os princípios SOLID.": true,
+  "Preferir padrões de programação funcional e declarativa em vez de imperativa.": true,
+  "Enfatizar a segurança de tipos e a análise estática.": true,
+  "Praticar o desenvolvimento orientado a componentes.": true,
 
-### Integração de Comandos
-- Todos os comandos seguem protocolo TDAH
-- Documentação automática
-- Tracking de progresso
-- Validação de execução
+  "// Diretrizes de Implementação de Código": true,
+  "// Fase de Planejamento": true,
+  "Iniciar com planejamento passo a passo.": true,
+  "Escrever pseudocódigo detalhado antes da implementação.": true,
+  "Documentar a arquitetura dos componentes e o fluxo de dados.": true,
+  "Considerar casos extremos e cenários de erro.": true,
 
-This comprehensive guide outlines best practices, conventions, and standards for development with modern web technologies including ReactJS, NextJS, Redux, TypeScript, JavaScript, HTML, CSS, and UI frameworks.
+  "// Estilo de Código": true,
+  "Usar tabulações para indentação.": true,
+  "Usar aspas simples para strings (exceto para evitar escape).": true,
+  "Omitir ponto e vírgula (a menos que seja necessário para desambiguação).": true,
+  "Eliminar variáveis não utilizadas.": true,
+  "Adicionar espaço após palavras-chave.": true,
+  "Adicionar espaço antes dos parênteses de declaração de função.": true,
+  "Sempre usar igualdade estrita (===) em vez de igualdade solta (==).": true,
+  "Espaçar operadores infix.": true,
+  "Adicionar espaço após vírgulas.": true,
+  "Manter as declarações 'else' na mesma linha que as chaves de fechamento.": true,
+  "Usar chaves para instruções 'if' de várias linhas.": true,
+  "Sempre lidar com parâmetros de erro em callbacks.": true,
+  "Limitar o comprimento da linha a 80 caracteres.": true,
+  "Usar vírgulas finais em literais de objeto/array multilinhas.": true,
 
-Development Philosophy
-- Write clean, maintainable, and scalable code
-- Follow SOLID principles
-- Prefer functional and declarative programming patterns over imperative
-- Emphasize type safety and static analysis
-- Practice component-driven development
+  "// Convenções de Nomenclatura": true,
+  "// Regras Gerais": true,
+  "Use PascalCase para: Componentes, Definições de tipo, Interfaces": true,
+  "// Exemplo: components/MinhaTarefa, types/UsuarioProps, interfaces/Produto": true,
+  "Use kebab-case para: Nomes de diretório, Nomes de arquivo": true,
+  "// Exemplo: components/auth-wizard, user-profile.tsx": true,
+  "Use camelCase para: Variáveis, Funções, Métodos, Hooks, Propriedades, Props": true,
+  "// Exemplo: let usuarioAtivo, function obterDados(), useState()": true,
+  "Use UPPERCASE para: Variáveis de ambiente, Constantes, Configurações globais": true,
+  "// Exemplo: const URL_BASE = 'https://api.example.com', process.env.API_KEY": true,
 
-Code Implementation Guidelines
-Planning Phase
-- Begin with step-by-step planning
-- Write detailed pseudocode before implementation
-- Document component architecture and data flow
-- Consider edge cases and error scenarios
+  "// Padrões de Nomenclatura Específicos": true,
+  "Prefixar manipuladores de eventos com 'handle': handleClick, handleSubmit": true,
+  "Prefixar variáveis booleanas com verbos: isLoading, hasError, canSubmit": true,
+  "Prefixar hooks customizados com 'use': useAuth, useForm": true,
+  "Usar palavras completas em vez de abreviações, exceto para: err (error), req (request), res (response), props (properties), ref (reference)": true,
 
-Code Style
-- Use tabs for indentation
-- Use single quotes for strings (except to avoid escaping)
-- Omit semicolons (unless required for disambiguation)
-- Eliminate unused variables
-- Add space after keywords
-- Add space before function declaration parentheses
-- Always use strict equality (===) instead of loose equality (==)
-- Space infix operators
-- Add space after commas
-- Keep else statements on the same line as closing curly braces
-- Use curly braces for multi-line if statements
-- Always handle error parameters in callbacks
-- Limit line length to 80 characters
-- Use trailing commas in multiline object/array literals
+  "// Melhores Práticas React": true,
+  "// Arquitetura de Componentes": true,
+  "Usar componentes funcionais com interfaces TypeScript.": true,
+  "Definir componentes usando a palavra-chave function": true,
+  "Extrair lógica reutilizável em hooks customizados.": true,
+  "Implementar composição de componentes adequada.": true,
+  "Usar React.memo() estrategicamente para desempenho.": true,
+  "Implementar limpeza adequada nos hooks useEffect.": true,
 
-Naming Conventions
-General Rules
-- Use PascalCase for:
-  - Components
-  - Type definitions
-  - Interfaces
-- Use kebab-case for:
-  - Directory names (e.g., components/auth-wizard)
-  - File names (e.g., user-profile.tsx)
-- Use camelCase for:
-  - Variables
-  - Functions
-  - Methods
-  - Hooks
-  - Properties
-  - Props
-- Use UPPERCASE for:
-  - Environment variables
-  - Constants
-  - Global configurations
+  "// Otimização de Desempenho do React": true,
+  "Usar useCallback para memoizar funções de callback.": true,
+  "Implementar useMemo para computações caras.": true,
+  "Evitar definições de função inline em JSX.": true,
+  "Implementar code splitting usando dynamic imports.": true,
+  "Implementar props 'key' adequadas em listas (evitar usar index como key).": true,
 
-Specific Naming Patterns
-- Prefix event handlers with 'handle': handleClick, handleSubmit
-- Prefix boolean variables with verbs: isLoading, hasError, canSubmit
-- Prefix custom hooks with 'use': useAuth, useForm
-- Use complete words over abbreviations except for:
-  - err (error)
-  - req (request)
-  - res (response)
-  - props (properties)
-  - ref (reference)
+  "// Melhores Práticas Next.js": true,
+  "// Conceitos Principais": true,
+  "Utilizar o App Router para roteamento.": true,
+  "Implementar gerenciamento de metadados adequado.": true,
+  "Usar estratégias de cache adequadas.": true,
+  "Implementar limites de erro adequados.": true,
 
-React Best Practices
-Component Architecture
-- Use functional components with TypeScript interfaces
-- Define components using the function keyword
-- Extract reusable logic into custom hooks
-- Implement proper component composition
-- Use React.memo() strategically for performance
-- Implement proper cleanup in useEffect hooks
+  "// Componentes e Recursos": true,
+  "Usar os componentes integrados do Next.js: Image, Link, Script, Head": true,
+  "Implementar estados de carregamento adequados.": true,
+  "Usar métodos adequados de busca de dados.": true,
 
-React Performance Optimization
-- Use useCallback for memoizing callback functions
-- Implement useMemo for expensive computations
-- Avoid inline function definitions in JSX
-- Implement code splitting using dynamic imports
-- Implement proper key props in lists (avoid using index as key)
+  "// Server Components": true,
+  "Padronizar para Server Components.": true,
+  "Usar parâmetros de consulta de URL para busca de dados e gerenciamento de estado do servidor.": true,
+  "Usar a diretiva 'use client' apenas quando necessário: Event listeners, APIs do navegador, Gerenciamento de estado, Bibliotecas client-side": true,
 
-Next.js Best Practices
-Core Concepts
-- Utilize App Router for routing
-- Implement proper metadata management
-- Use proper caching strategies
-- Implement proper error boundaries
+  "// Implementação TypeScript": true,
+  "Habilitar o modo strict.": true,
+  "Definir interfaces claras para props de componentes, estado e estrutura de estado Redux.": true,
+  "Usar type guards para lidar com segurança com potenciais valores undefined ou null.": true,
+  "Aplicar generics a funções, actions e slices onde a flexibilidade de tipo é necessária.": true,
+  "Utilizar tipos utilitários do TypeScript (Partial, Pick, Omit) para código mais limpo e reutilizável.": true,
+  "Preferir interface em vez de type para definir estruturas de objeto, especialmente ao estender.": true,
+  "Usar mapped types para criar variações de tipos existentes dinamicamente.": true,
 
-Components and Features
-- Use Next.js built-in components:
-  - Image component for optimized images
-  - Link component for client-side navigation
-  - Script component for external scripts
-  - Head component for metadata
-- Implement proper loading states
-- Use proper data fetching methods
+  "// UI e Estilização": true,
+  "// Bibliotecas de Componentes": true,
+  "Usar Shadcn UI para design de componentes consistente e acessível.": true,
+  "Integrar Radix UI primitives para elementos de UI personalizáveis e acessíveis.": true,
+  "Aplicar padrões de composição para criar componentes modulares e reutilizáveis.": true,
 
-Server Components
-- Default to Server Components
-- Use URL query parameters for data fetching and server state management
-- Use 'use client' directive only when necessary:
-  - Event listeners
-  - Browser APIs
-  - State management
-  - Client-side-only libraries
+  "// Diretrizes de Estilização": true,
+  "Usar Tailwind CSS para estilização.": true,
+  "Usar Tailwind CSS para estilização utilitária e de fácil manutenção.": true,
+  "Projetar com princípios responsivos e mobile-first para flexibilidade entre dispositivos.": true,
+  "Implementar dark mode usando variáveis CSS ou recursos de dark mode do Tailwind.": true,
+  "Garantir que as taxas de contraste de cores atendam aos padrões de acessibilidade para legibilidade.": true,
+  "Manter valores de espaçamento consistentes para estabelecer harmonia visual.": true,
+  "Definir variáveis CSS para cores de tema e espaçamento para suportar temas fáceis e manutenibilidade.": true,
 
-TypeScript Implementation
-- Enable strict mode
-- Define clear interfaces for component props, state, and Redux state structure.
-- Use type guards to handle potential undefined or null values safely.
-- Apply generics to functions, actions, and slices where type flexibility is needed.
-- Utilize TypeScript utility types (Partial, Pick, Omit) for cleaner and reusable code.
-- Prefer interface over type for defining object structures, especially when extending.
-- Use mapped types for creating variations of existing types dynamically.
+  "// Gerenciamento de Estado": true,
+  "// Estado Local": true,
+  "Usar useState para estado no nível do componente.": true,
+  "Implementar useReducer para estado complexo.": true,
+  "Usar useContext para estado compartilhado.": true,
+  "Implementar inicialização de estado adequada.": true,
 
-UI and Styling
-Component Libraries
-- Use Shadcn UI for consistent, accessible component design.
-- Integrate Radix UI primitives for customizable, accessible UI elements.
-- Apply composition patterns to create modular, reusable components.
+  "// Estado Global": true,
+  "Usar Redux Toolkit para estado global.": true,
+  "Usar createSlice para definir estado, reducers e actions juntos.": true,
+  "Evitar usar createReducer e createAction, a menos que necessário.": true,
+  "Normalizar a estrutura do estado para evitar dados profundamente aninhados.": true,
+  "Usar seletores para encapsular o acesso ao estado.": true,
+  "Evitar slices grandes e abrangentes; separar as preocupações por recurso.": true,
 
-Styling Guidelines
-- Use Tailwind CSS for styling
-- Use Tailwind CSS for utility-first, maintainable styling.
-- Design with mobile-first, responsive principles for flexibility across devices.
-- Implement dark mode using CSS variables or Tailwind’s dark mode features.
-- Ensure color contrast ratios meet accessibility standards for readability.
-- Maintain consistent spacing values to establish visual harmony.
-- Define CSS variables for theme colors and spacing to support easy theming and maintainability.
+  "// Tratamento de Erros e Validação": true,
+  "// Validação de Formulários": true,
+  "Usar Zod para validação de schema.": true,
+  "Implementar mensagens de erro adequadas.": true,
+  "Usar bibliotecas de formulário adequadas (por exemplo, React Hook Form).": true,
 
-State Management
-Local State
-- Use useState for component-level state
-- Implement useReducer for complex state
-- Use useContext for shared state
-- Implement proper state initialization
+  "// Limites de Erro": true,
+  "Usar limites de erro para capturar e lidar com erros em árvores de componentes React de forma elegante.": true,
+  "Registrar erros capturados em um serviço externo (por exemplo, Sentry) para rastreamento e depuração.": true,
+  "Projetar UIs de fallback amigáveis para exibir quando ocorrem erros, mantendo os usuários informados sem quebrar o aplicativo.": true,
 
-Global State
-- Use Redux Toolkit for global state
-- Use createSlice to define state, reducers, and actions together.
-- Avoid using createReducer and createAction unless necessary.
-- Normalize state structure to avoid deeply nested data.
-- Use selectors to encapsulate state access.
-- Avoid large, all-encompassing slices; separate concerns by feature.
+  "// Testes": true,
+  "// Testes de Unidade": true,
+  "Escrever testes unitários completos para validar funções e componentes individuais.": true,
+  "Usar Jest e React Testing Library para testes confiáveis e eficientes de componentes React.": true,
+  "Seguir padrões como Arrange-Act-Assert para garantir clareza e consistência nos testes.": true,
+  "Simular dependências externas e chamadas de API para isolar testes unitários.": true,
 
+  "// Testes de Integração": true,
+  "Focar nos fluxos de trabalho do usuário para garantir a funcionalidade do aplicativo.": true,
+  "Configurar e desmontar ambientes de teste adequadamente para manter a independência do teste.": true,
+  "Usar testes de snapshot seletivamente para capturar mudanças indesejadas na UI sem depender demais disso.": true,
+  "Aproveitar utilitários de teste (por exemplo, screen em RTL) para testes mais limpos e legíveis.": true,
 
-Error Handling and Validation
-Form Validation
-- Use Zod for schema validation
-- Implement proper error messages
-- Use proper form libraries (e.g., React Hook Form)
+  "// Acessibilidade (a11y)": true,
+  "// Requisitos Principais": true,
+  "Usar HTML semântico para estrutura significativa.": true,
+  "Aplicar atributos ARIA precisos quando necessário.": true,
+  "Garantir suporte total à navegação por teclado.": true,
+  "Gerenciar a ordem e a visibilidade do foco de forma eficaz.": true,
+  "Manter taxas de contraste de cores acessíveis.": true,
+  "Seguir uma hierarquia de cabeçalho lógica.": true,
+  "Tornar todos os elementos interativos acessíveis.": true,
+  "Fornecer feedback de erro claro e acessível.": true,
 
-Error Boundaries
-- Use error boundaries to catch and handle errors in React component trees gracefully.
-- Log caught errors to an external service (e.g., Sentry) for tracking and debugging.
-- Design user-friendly fallback UIs to display when errors occur, keeping users informed without breaking the app.
+  "// Segurança": true,
+  "Implementar sanitização de entrada para evitar ataques XSS.": true,
+  "Usar DOMPurify para sanitizar conteúdo HTML.": true,
+  "Usar métodos de autenticação adequados.": true,
 
-Testing
-Unit Testing
-- Write thorough unit tests to validate individual functions and components.
-- Use Jest and React Testing Library for reliable and efficient testing of React components.
-- Follow patterns like Arrange-Act-Assert to ensure clarity and consistency in tests.
-- Mock external dependencies and API calls to isolate unit tests.
+  "// Internacionalização (i18n)": true,
+  "Usar next-i18next para traduções.": true,
+  "Implementar detecção de localidade adequada.": true,
+  "Usar formatação adequada de número e data.": true,
+  "Implementar suporte RTL adequado.": true,
+  "Usar formatação de moeda adequada.": true,
 
-Integration Testing
-- Focus on user workflows to ensure app functionality.
-- Set up and tear down test environments properly to maintain test independence.
-- Use snapshot testing selectively to catch unintended UI changes without over-relying on it.
-- Leverage testing utilities (e.g., screen in RTL) for cleaner and more readable tests.
-
-Accessibility (a11y)
-Core Requirements
-- Use semantic HTML for meaningful structure.
-- Apply accurate ARIA attributes where needed.
-- Ensure full keyboard navigation support.
-- Manage focus order and visibility effectively.
-- Maintain accessible color contrast ratios.
-- Follow a logical heading hierarchy.
-- Make all interactive elements accessible.
-- Provide clear and accessible error feedback.
-
-Security
-- Implement input sanitization to prevent XSS attacks.
-- Use DOMPurify for sanitizing HTML content.
-- Use proper authentication methods.
-
-Internationalization (i18n)
-- Use next-i18next for translations
-- Implement proper locale detection
-- Use proper number and date formatting
-- Implement proper RTL support
-- Use proper currency formatting
-
-Documentation
-- Use JSDoc for documentation
-- Document all public functions, classes, methods, and interfaces
-- Add examples when appropriate
-- Use complete sentences with proper punctuation
-- Keep descriptions clear and concise
-- Use proper markdown formatting
-- Use proper code blocks
-- Use proper links
-- Use proper headings
-- Use proper lists
-    
-     "execution_protocol": {
-    "mandatory_checks": {
-      "pre_execution": [
-        "Verificar entendimento do comando",
-        "Confirmar contexto atual",
-        "Validar recursos necessários"
-      ],
-      "during_execution": [
-        "Documentar cada passo",
-        "Confirmar progresso",
-        "Manter contexto visível"
-      ],
-      "post_execution": [
-        "Validar resultados",
-        "Confirmar completude",
-        "Documentar aprendizados"
-      ]
-    },
-    "tdah_support": {
-      "communication": {
-        "format": "visual_blocks",
-        "confirmation_required": true,
-        "progress_tracking": true
-      },
-      "task_management": {
-        "max_steps_per_block": 3,
-        "visual_markers": true,
-        "context_retention": true
-      }
-    },
-    "development_rules": {
-      "file_analysis": {
-        "depth_required": true,
-        "content_verification": true,
-        "structure_validation": true
-      },
-      "command_execution": {
-        "protocol_check": "/check_exec",
-        "documentation_required": true,
-        "validation_steps": true,
-        "mandatory_check": {
-          "required": true,
-          "block_execution": true,
-          "warning": "ATENÇÃO: Nenhuma ação deve ser executada sem antes passar pela verificação do protocolo /check_exec",
-          "verification_steps": [
-            "Verificar entendimento do comando",
-            "Confirmar contexto atual",
-            "Validar recursos necessários",
-            "Documentar processo",
-            "Confirmar progresso",
-            "Validar resultados"
-          ],
-          "strict_rules": {
-            "block_without_check": true,
-            "require_full_verification": true,
-            "prevent_partial_checks": true,
-            "error_message": "ERRO: Execução bloqueada. O protocolo /check_exec deve ser executado completamente antes de qualquer ação.",
-            "validation_requirements": [
-              "Todas as etapas de verificação devem ser completadas",
-              "Cada passo deve ser documentado explicitamente",
-              "Nenhuma ação pode ser iniciada sem verificação completa",
-              "Resultados parciais não são aceitos"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "verification_steps": {
-    "command_analysis": [
-      "Entender objetivo principal",
-      "Identificar recursos necessários",
-      "Confirmar viabilidade"
-    ],
-    "execution_tracking": [
-      "Registrar cada ação",
-      "Validar resultados parciais",
-      "Confirmar progresso"
-    ],
-    "result_validation": [
-      "Verificar completude",
-      "Confirmar qualidade",
-      "Documentar resultado"
-    ]
-  },
-  "scientific_foundation": {
-    "neuroscience_references": {
-      "attention_executive_function": [
-        {
-          "title": "Executive Function and ADHD",
-          "authors": "Arnsten, A. F.",
-          "journal": "Bio Psychiatry",
-          "year": 2012
-        }
-      ],
-      "neuroplasticity_learning": [
-        {
-          "title": "Cognitive Training as a New Treatment for Adult ADHD: A Review of Current Evidence",
-          "authors": "Sonuga-Barke, E., et al.",
-          "journal": "Journal of Child Psychology and Psychiatry",
-          "year": 2014,
-          "doi": "10.1111/jcpp.12191",
-          "key_findings": [
-            "Plasticidade cerebral em adultos com TDAH",
-            "Eficácia de treinamento cognitivo",
-            "Estratégias de intervenção"
-          ]
-        }
-      ]
-    },
-    "neuropsychiatry_references": {
-      "medication_studies": [
-        {
-          "title": "Long-term outcomes of ADHD",
-          "authors": "Biederman, J.",
-          "journal": "J Clin Psychiatry",
-          "year": 2016
-        }
-      ]
-    },
-    "neuropsychology_references": {
-      "cognitive_assessment": [
-        {
-          "title": "Working Memory Training in Adult ADHD",
-          "authors": "Mawjee, K., et al.",
-          "journal": "Journal of Attention Disorders",
-          "year": 2017,
-          "doi": "10.1177/1087054714565642"
-        }
-      ],
-      "behavioral_interventions": [
-        {
-          "title": "Behavioral Interventions in Adult ADHD",
-          "authors": "Knouse, L. E.",
-          "journal": "Professional Psychology",
-          "year": 2017
-        }
-      ]
-    },
-    "neuropsychopedagogy_references": {
-      "learning_strategies": [
-        {
-          "title": "Educational Interventions for Students with ADHD: A Meta-Analysis",
-          "authors": "DuPaul, G. J., et al.",
-          "journal": "School Psychology Review",
-          "year": 2017,
-          "doi": "10.17105/SPR-2017-0001.V46-4",
-          "key_findings": [
-            "Intervenções educacionais efetivas",
-            "Adaptações em ambiente de estudo",
-            "Estratégias de aprendizagem personalizada"
-          ]
-        },
-        {
-          "title": "Study Skills Interventions for College Students with ADHD",
-          "authors": "Prevatt, F., & Yelland, S.",
-          "journal": "Current Psychiatry Reports",
-          "year": 2015,
-          "doi": "10.1007/s11920-015-0577-x",
-          "key_findings": [
-            "Técnicas de estudo adaptadas",
-            "Gestão de tempo acadêmico",
-            "Suporte educacional específico"
-          ]
-        },
-        {
-          "title": "Cognitive Strategy Instruction for Adults with ADHD",
-          "authors": "Solanto, M. V., et al.",
-          "journal": "Journal of Learning Disabilities",
-          "year": 2019,
-          "doi": "10.1177/0022219419859615",
-          "key_findings": [
-            "Estratégias metacognitivas",
-            "Adaptações para estudo",
-            "Resultados em longo prazo"
-          ]
-        }
-      ],
-      "educational_adaptations": [
-        {
-          "title": "Technology-Enhanced Learning for ADHD",
-          "authors": "Tannock, R., & Moldavsky, M.",
-          "journal": "Educational Research Review",
-          "year": 2020,
-          "doi": "10.1016/j.edurev.2020.100324",
-          "key_findings": [
-            "Uso de tecnologia assistiva",
-            "Adaptações digitais",
-            "Suporte à aprendizagem"
-          ]
-        }
-      ]
-    },
-    "integration_studies": {
-      "multimodal_approaches": [
-        {
-          "title": "Integrated Treatment Approaches",
-          "authors": "Ramsay, J. R.",
-          "journal": "Professional Psychology",
-          "year": 2020
-        }
-      ],
-      "evidence_synthesis": [
-        {
-          "title": "Evidence-Based Guidelines for Adult ADHD",
-          "authors": "Kooij, J. J. S., et al.",
-          "journal": "BMC Psychiatry",
-          "year": 2019,
-          "doi": "10.1186/s12888-019-2252-y",
-          "key_findings": [
-            "Diretrizes baseadas em evidências",
-            "Protocolos integrados",
-            "Recomendações práticas"
-          ]
-        }
-      ]
-    },
-    "implementation_guidelines": {
-      "evidence_based_practices": [
-        {
-          "practice": "Divisão de tarefas",
-          "evidence": "Meta-análise de 32 estudos (Brown, 2013)",
-          "effectiveness": "Redução de 45% em erros de execução"
-        },
-        {
-          "practice": "Feedback visual",
-          "evidence": "Revisão sistemática de 28 estudos (Smith, 2015)",
-          "effectiveness": "Aumento de 60% na conclusão de tarefas"
-        },
-        {
-          "practice": "Integração multidisciplinar",
-          "evidence": "Revisão sistemática de 45 estudos (Johnson, 2020)",
-          "effectiveness": "Melhora de 65% nos resultados quando abordagens são combinadas"
-        },
-        {
-          "practice": "Adaptações educacionais",
-          "evidence": "Meta-análise de 38 estudos (Martinez, 2019)",
-          "effectiveness": "Aumento de 55% no desempenho acadêmico"
-        }
-      ],
-      "clinical_protocols": [
-        {
-          "name": "Protocolo Integrado de Avaliação",
-          "source": "International Consensus Group on ADHD",
-          "year": 2021,
-          "components": [
-            "Avaliação neuropsiquiátrica",
-            "Testagem neuropsicológica",
-            "Avaliação neuropsicopedagógica"
-          ]
-        }
-      ]
-    }
-  },
+  "// Documentação": true,
+  "Usar JSDoc para documentação.": true,
+  "Documentar todas as funções, classes, métodos e interfaces públicas.": true,
+  "Adicionar exemplos quando apropriado.": true,
+  "Usar frases completas com pontuação adequada.": true,
+  "Manter as descrições claras e concisas.": true,
+  "Usar formatação markdown adequada.": true,
+  "Usar blocos de código adequados.": true,
+  "Usar links adequados.": true,
+  "Usar cabeçalhos adequados.": true,
+  "Usar listas adequadas.": true
+}
