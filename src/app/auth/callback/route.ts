@@ -1,4 +1,4 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { storage, auth } from "@/lib/storage";
 import { type NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {

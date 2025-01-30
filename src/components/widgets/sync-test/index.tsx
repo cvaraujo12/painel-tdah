@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { Box, Button, Typography, Alert } from '@mui/material';
-import { createBrowserClient } from '@supabase/ssr';
 
 export const SyncTest = () => {
   const [status, setStatus] = useState('Aguardando...');

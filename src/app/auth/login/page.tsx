@@ -1,3 +1,4 @@
+import { storage, auth } from "@/lib/storage";
 'use client'
 
 import React from 'react'
@@ -12,7 +13,6 @@ import {
   Alert,
   Paper,
 } from '@mui/material'
-import { createBrowserClient } from '@supabase/ssr'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -31,7 +31,7 @@ export default function LoginPage() {
     setError(null)
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await auth.signInWithPassword({
         email,
         password,
       })

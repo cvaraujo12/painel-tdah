@@ -1,17 +1,19 @@
-'use client';
+import { Suspense } from 'react'
+import { Inter } from 'next/font/google'
+import { Providers } from './providers'
+import { Loading } from '@/components/ui/loading'
 
-import { Inter as FontSans } from "next/font/google"
-import { Toaster } from "sonner"
+const inter = Inter({ subsets: ['latin'] })
 
-import { cn } from "@/lib/utils"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-
-import "./globals.css"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+export const metadata = {
+  title: 'Painel TDAH',
+  description: 'Sistema de gerenciamento para pessoas com TDAH',
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
 
 export default function RootLayout({
   children,
@@ -19,23 +21,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className={inter.className}>
+        <Providers>
+          <Suspense fallback={<Loading />}>
+            {children}
+          </Suspense>
+        </Providers>
       </body>
     </html>
   )

@@ -29,11 +29,13 @@ type TableName = 'tasks' | 'notes' | 'mood_entries';
 
 class LocalStorage {
   private getTableData<T>(table: TableName): T[] {
+    if (typeof window === 'undefined') return [];
     const data = localStorage.getItem(table);
     return data ? JSON.parse(data) : [];
   }
 
   private setTableData<T>(table: TableName, data: T[]): void {
+    if (typeof window === 'undefined') return;
     localStorage.setItem(table, JSON.stringify(data));
   }
 
@@ -82,8 +84,6 @@ class LocalStorage {
   }
 }
 
-export const storage = new LocalStorage();
-
 // Mock da autenticação
 interface User {
   id: string;
@@ -95,6 +95,7 @@ class AuthService {
   private readonly STORAGE_KEY = 'auth_user';
 
   getCurrentUser(): User | null {
+    if (typeof window === 'undefined') return null;
     const userData = localStorage.getItem(this.STORAGE_KEY);
     return userData ? JSON.parse(userData) : null;
   }
@@ -106,12 +107,16 @@ class AuthService {
       email,
       name: email.split('@')[0],
     };
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(user));
+    }
     return user;
   }
 
   async signOut(): Promise<void> {
-    localStorage.removeItem(this.STORAGE_KEY);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(this.STORAGE_KEY);
+    }
   }
 
   async signUp(email: string, password: string): Promise<User> {
@@ -119,4 +124,7 @@ class AuthService {
   }
 }
 
-export const auth = new AuthService(); 
+export const storage = new LocalStorage();
+export const auth = new AuthService();
+
+export type { User, Task, Note, MoodEntry, TableName, StorageItem }; 

@@ -1,3 +1,4 @@
+import { storage, auth } from "@/lib/storage";
 import { Metadata } from "next"
 import Link from "next/link"
 

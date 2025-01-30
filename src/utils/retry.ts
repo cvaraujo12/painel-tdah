@@ -1,4 +1,3 @@
-import { PostgrestResponse, PostgrestSingleResponse, PostgrestFilterBuilder } from '@supabase/supabase-js';
 
 interface RetryConfig {
   maxAttempts: number;

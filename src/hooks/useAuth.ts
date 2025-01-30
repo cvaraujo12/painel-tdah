@@ -1,50 +1,47 @@
+import { storage, auth } from "@/lib/storage";
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createBrowserClient } from '@supabase/ssr'
-import { User, Session } from '@supabase/supabase-js'
+import { User } from '@/lib/storage'
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null)
-  const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
 
   useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
+    const checkAuth = () => {
+      const currentUser = auth.getCurrentUser()
+      setUser(currentUser)
       setLoading(false)
 
-      if (!session) {
+      if (!currentUser) {
         router.push('/auth/login')
+      }
+    }
+
+    // Verificar autenticação inicial
+    checkAuth()
+
+    // Adicionar listener para mudanças de autenticação
+    window.addEventListener('storage', (event) => {
+      if (event.key === auth['STORAGE_KEY']) {
+        checkAuth()
       }
     })
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
-    })
-
-    return () => subscription.unsubscribe()
-  }, [router, supabase])
+    return () => {
+      window.removeEventListener('storage', checkAuth)
+    }
+  }, [router])
 
   const signOut = async () => {
-    await supabase.auth.signOut()
+    await auth.signOut()
     router.push('/auth/login')
   }
 
   return {
     user,
-    session,
     loading,
-    signOut,
-    supabase,
+    signOut
   }
 } 

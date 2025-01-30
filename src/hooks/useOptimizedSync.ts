@@ -1,11 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { createBrowserClient } from '@supabase/ssr';
 import { Task, TaskInput, TaskUpdate } from '@/types/Task';
 import { useAuth } from '@/hooks/useAuth';
 import { cacheConfigs } from '@/config/cache';
 import { withRetry } from '@/utils/retry';
 import { offlineQueue } from '@/utils/offlineQueue';
-import { PostgrestResponse, PostgrestSingleResponse } from '@supabase/supabase-js';
+import { storage } from '@/lib/storage';
 
 interface CacheItem<T> {
   data: T[];
@@ -21,18 +20,13 @@ interface SyncOptions<T> {
 const cache: Record<string, CacheItem<any>> = {};
 
 export function useOptimizedSync<T extends Task>(
-  table: string,
+  table: 'tasks' | 'notes' | 'mood_entries',
   options: SyncOptions<T> = {}
 ) {
   const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const { user } = useAuth();
-
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
 
   const loadData = useCallback(async () => {
     if (!user) {
@@ -53,18 +47,7 @@ export function useOptimizedSync<T extends Task>(
         return;
       }
 
-      const result = await withRetry<T[]>(() => 
-        supabase
-          .from(table)
-          .select('*')
-          .eq('user_id', user.id)
-      );
-
-      if (!result.data) {
-        throw new Error('Nenhum dado retornado');
-      }
-
-      const items = result.data as T[];
+      const items = await storage.query<T>(table, user.id);
       let sortedData = [...items];
 
       if (options.sortBy) {
@@ -86,10 +69,6 @@ export function useOptimizedSync<T extends Task>(
         });
       }
 
-      if (cacheConfig.maxSize && sortedData.length > cacheConfig.maxSize) {
-        sortedData = sortedData.slice(0, cacheConfig.maxSize);
-      }
-
       cache[cacheKey] = {
         data: sortedData,
         timestamp: now
@@ -101,7 +80,7 @@ export function useOptimizedSync<T extends Task>(
       setError(err as Error);
       setLoading(false);
     }
-  }, [table, options, supabase, user]);
+  }, [table, options, user]);
 
   const add = useCallback(async (item: TaskInput) => {
     if (!user) {
@@ -119,27 +98,15 @@ export function useOptimizedSync<T extends Task>(
     }
 
     try {
-      const result = await withRetry<T>(() =>
-        supabase
-          .from(table)
-          .insert([{ ...item, user_id: user.id }])
-          .select()
-          .single()
-      );
-
-      if (!result.data) {
-        throw new Error('Erro ao adicionar item');
-      }
-
-      const newItem = result.data as T;
+      const newItem = await storage.insert<T>(table, item as Partial<T>, user.id);
       setData(prev => [...prev, newItem]);
       await loadData();
     } catch (err) {
       setError(err as Error);
     }
-  }, [table, supabase, loadData, user]);
+  }, [table, loadData, user]);
 
-  const update = useCallback(async (id: number, updates: TaskUpdate) => {
+  const update = useCallback(async (id: string, updates: TaskUpdate) => {
     if (!user) {
       setError(new Error('Usuário não autenticado'));
       return;
@@ -155,32 +122,19 @@ export function useOptimizedSync<T extends Task>(
     }
 
     try {
-      const result = await withRetry<T>(() =>
-        supabase
-          .from(table)
-          .update(updates)
-          .eq('id', id)
-          .eq('user_id', user.id)
-          .select()
-          .single()
-      );
-
-      if (result.error) throw result.error;
-
-      if (result.data) {
-        const updatedItem = result.data as T;
+      const updatedItem = await storage.update<T>(table, id, updates as Partial<T>);
+      if (updatedItem) {
         setData(prev => prev.map(item => 
           item.id === id ? updatedItem : item
         ));
       }
-      
       await loadData();
     } catch (err) {
       setError(err as Error);
     }
-  }, [table, supabase, loadData, user]);
+  }, [table, loadData, user]);
 
-  const remove = useCallback(async (id: number) => {
+  const remove = useCallback(async (id: string) => {
     if (!user) {
       setError(new Error('Usuário não autenticado'));
       return;
@@ -196,46 +150,17 @@ export function useOptimizedSync<T extends Task>(
     }
 
     try {
-      const result = await withRetry<T>(() =>
-        supabase
-          .from(table)
-          .delete()
-          .eq('id', id)
-          .eq('user_id', user.id)
-          .select()
-          .single()
-      );
-
-      if (result.error) throw result.error;
-
+      await storage.delete(table, id);
       setData(prev => prev.filter(item => item.id !== id));
       await loadData();
     } catch (err) {
       setError(err as Error);
     }
-  }, [table, supabase, loadData, user]);
+  }, [table, loadData, user]);
 
   useEffect(() => {
     loadData();
-
-    if (!user) return;
-
-    const channel = supabase
-      .channel(`${table}_changes_${user.id}`)
-      .on('postgres_changes', { 
-        event: '*', 
-        schema: 'public', 
-        table,
-        filter: `user_id=eq.${user.id}`
-      }, () => {
-        loadData();
-      })
-      .subscribe();
-
-    return () => {
-      channel.unsubscribe();
-    };
-  }, [table, loadData, supabase, user]);
+  }, [loadData]);
 
   return {
     data,
