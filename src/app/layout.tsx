@@ -1,31 +1,42 @@
 'use client';
 
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { useTheme } from '../hooks/useTheme';
-import ErrorBoundary from '../components/ErrorBoundary';
+import { Inter as FontSans } from "next/font/google"
+import { Toaster } from "sonner"
+
+import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/providers/theme-provider"
+
+import "./globals.css"
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const { theme } = useTheme();
-
   return (
-    <html lang="pt-BR">
-      <head>
-        <title>Painel TDAH</title>
-        <meta name="description" content="Painel de organização para TDAH" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body>
-        <ErrorBoundary>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
-        </ErrorBoundary>
+    <html lang="pt" suppressHydrationWarning>
+      <head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

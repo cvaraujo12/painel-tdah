@@ -38,23 +38,28 @@ export async function middleware(request: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession()
 
-  // Rotas públicas que não precisam de autenticação
-  const publicRoutes = ['/auth/login', '/auth/register', '/auth/callback']
-  const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname)
-
   // Se não estiver autenticado e tentar acessar rotas protegidas
-  if (!session && !isPublicRoute) {
-    return NextResponse.redirect(new URL('/auth/login', request.url))
+  if (!session && !request.nextUrl.pathname.startsWith('/auth')) {
+    return NextResponse.redirect(new URL('/auth', request.url))
   }
 
-  // Se estiver autenticado e tentar acessar páginas de auth
+  // Se estiver autenticado e tentar acessar rotas de auth
   if (session && request.nextUrl.pathname.startsWith('/auth')) {
-    return NextResponse.redirect(new URL('/', request.url))
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
   return response
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    /*
+     * Match all request paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder
+     */
+    "/((?!_next/static|_next/image|favicon.ico|public).*)",
+  ],
 } 

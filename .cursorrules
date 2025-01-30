@@ -1,192 +1,42 @@
-{
-  "// Regras para auxiliar no desenvolvimento de um projeto web com React, Next.js, Redux, TypeScript, seguindo as melhores práticas e convenções.": true,
-  "// Utiliza as diretrizes para TDAH e os comandos do sistema especificados.": true,
+You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI and Tailwind.
 
-  "// Comandos do Sistema": true,
-  "// /c - Comando de Verificação": true,
-  "// Antes de executar qualquer ação, a IA deve confirmar o entendimento do comando, verificar o contexto atual e validar os recursos necessários.": true,
-  "// /up - Atualização Incremental": true,
-  "// A IA deve preservar a estrutura existente, adicionar novas informações, marcar atualizações com (⭐) e atualizar os arquivos .plan e .progress.": true,
-  "// /up --painel - Análise Completa": true,
-  "// A IA deve realizar uma análise estrutural do projeto, fornecer métricas e status, fazer recomendações e gerar um relatório detalhado.": true,
+Key Principles
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, subcomponents, helpers, static content, types.
 
-  "// Integração de Comandos": true,
-  "// Todos os comandos seguem o protocolo TDAH, com documentação automática, tracking de progresso e validação de execução.": true,
+Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Favor named exports for components.
 
-  "// Filosofia de Desenvolvimento": true,
-  "// Seguir os princípios SOLID.": true,
-  "Preferir padrões de programação funcional e declarativa em vez de imperativa.": true,
-  "Enfatizar a segurança de tipos e a análise estática.": true,
-  "Praticar o desenvolvimento orientado a componentes.": true,
+TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types.
+- Avoid enums; use maps instead.
+- Use functional components with TypeScript interfaces.
 
-  "// Diretrizes de Implementação de Código": true,
-  "// Fase de Planejamento": true,
-  "Iniciar com planejamento passo a passo.": true,
-  "Escrever pseudocódigo detalhado antes da implementação.": true,
-  "Documentar a arquitetura dos componentes e o fluxo de dados.": true,
-  "Considerar casos extremos e cenários de erro.": true,
+Syntax and Formatting
+- Use the "function" keyword for pure functions.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use declarative JSX.
 
-  "// Estilo de Código": true,
-  "Usar tabulações para indentação.": true,
-  "Usar aspas simples para strings (exceto para evitar escape).": true,
-  "Omitir ponto e vírgula (a menos que seja necessário para desambiguação).": true,
-  "Eliminar variáveis não utilizadas.": true,
-  "Adicionar espaço após palavras-chave.": true,
-  "Adicionar espaço antes dos parênteses de declaração de função.": true,
-  "Sempre usar igualdade estrita (===) em vez de igualdade solta (==).": true,
-  "Espaçar operadores infix.": true,
-  "Adicionar espaço após vírgulas.": true,
-  "Manter as declarações 'else' na mesma linha que as chaves de fechamento.": true,
-  "Usar chaves para instruções 'if' de várias linhas.": true,
-  "Sempre lidar com parâmetros de erro em callbacks.": true,
-  "Limitar o comprimento da linha a 80 caracteres.": true,
-  "Usar vírgulas finais em literais de objeto/array multilinhas.": true,
+UI and Styling
+- Use Shadcn UI, Radix, and Tailwind for components and styling.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
 
-  "// Convenções de Nomenclatura": true,
-  "// Regras Gerais": true,
-  "Use PascalCase para: Componentes, Definições de tipo, Interfaces": true,
-  "// Exemplo: components/MinhaTarefa, types/UsuarioProps, interfaces/Produto": true,
-  "Use kebab-case para: Nomes de diretório, Nomes de arquivo": true,
-  "// Exemplo: components/auth-wizard, user-profile.tsx": true,
-  "Use camelCase para: Variáveis, Funções, Métodos, Hooks, Propriedades, Props": true,
-  "// Exemplo: let usuarioAtivo, function obterDados(), useState()": true,
-  "Use UPPERCASE para: Variáveis de ambiente, Constantes, Configurações globais": true,
-  "// Exemplo: const URL_BASE = 'https://api.example.com', process.env.API_KEY": true,
+Performance Optimization
+- Minimize 'use client', 'useEffect', and 'setState'; favor React Server Components (RSC).
+- Wrap client components in Suspense with fallback.
+- Use dynamic loading for non-critical components.
+- Optimize images: use WebP format, include size data, implement lazy loading.
 
-  "// Padrões de Nomenclatura Específicos": true,
-  "Prefixar manipuladores de eventos com 'handle': handleClick, handleSubmit": true,
-  "Prefixar variáveis booleanas com verbos: isLoading, hasError, canSubmit": true,
-  "Prefixar hooks customizados com 'use': useAuth, useForm": true,
-  "Usar palavras completas em vez de abreviações, exceto para: err (error), req (request), res (response), props (properties), ref (reference)": true,
+Key Conventions
+- Use 'nuqs' for URL search parameter state management.
+- Optimize Web Vitals (LCP, CLS, FID).
+- Limit 'use client':
+- Favor server components and Next.js SSR.
+- Use only for Web API access in small components.
+- Avoid for data fetching or state management.
 
-  "// Melhores Práticas React": true,
-  "// Arquitetura de Componentes": true,
-  "Usar componentes funcionais com interfaces TypeScript.": true,
-  "Definir componentes usando a palavra-chave function": true,
-  "Extrair lógica reutilizável em hooks customizados.": true,
-  "Implementar composição de componentes adequada.": true,
-  "Usar React.memo() estrategicamente para desempenho.": true,
-  "Implementar limpeza adequada nos hooks useEffect.": true,
-
-  "// Otimização de Desempenho do React": true,
-  "Usar useCallback para memoizar funções de callback.": true,
-  "Implementar useMemo para computações caras.": true,
-  "Evitar definições de função inline em JSX.": true,
-  "Implementar code splitting usando dynamic imports.": true,
-  "Implementar props 'key' adequadas em listas (evitar usar index como key).": true,
-
-  "// Melhores Práticas Next.js": true,
-  "// Conceitos Principais": true,
-  "Utilizar o App Router para roteamento.": true,
-  "Implementar gerenciamento de metadados adequado.": true,
-  "Usar estratégias de cache adequadas.": true,
-  "Implementar limites de erro adequados.": true,
-
-  "// Componentes e Recursos": true,
-  "Usar os componentes integrados do Next.js: Image, Link, Script, Head": true,
-  "Implementar estados de carregamento adequados.": true,
-  "Usar métodos adequados de busca de dados.": true,
-
-  "// Server Components": true,
-  "Padronizar para Server Components.": true,
-  "Usar parâmetros de consulta de URL para busca de dados e gerenciamento de estado do servidor.": true,
-  "Usar a diretiva 'use client' apenas quando necessário: Event listeners, APIs do navegador, Gerenciamento de estado, Bibliotecas client-side": true,
-
-  "// Implementação TypeScript": true,
-  "Habilitar o modo strict.": true,
-  "Definir interfaces claras para props de componentes, estado e estrutura de estado Redux.": true,
-  "Usar type guards para lidar com segurança com potenciais valores undefined ou null.": true,
-  "Aplicar generics a funções, actions e slices onde a flexibilidade de tipo é necessária.": true,
-  "Utilizar tipos utilitários do TypeScript (Partial, Pick, Omit) para código mais limpo e reutilizável.": true,
-  "Preferir interface em vez de type para definir estruturas de objeto, especialmente ao estender.": true,
-  "Usar mapped types para criar variações de tipos existentes dinamicamente.": true,
-
-  "// UI e Estilização": true,
-  "// Bibliotecas de Componentes": true,
-  "Usar Shadcn UI para design de componentes consistente e acessível.": true,
-  "Integrar Radix UI primitives para elementos de UI personalizáveis e acessíveis.": true,
-  "Aplicar padrões de composição para criar componentes modulares e reutilizáveis.": true,
-
-  "// Diretrizes de Estilização": true,
-  "Usar Tailwind CSS para estilização.": true,
-  "Usar Tailwind CSS para estilização utilitária e de fácil manutenção.": true,
-  "Projetar com princípios responsivos e mobile-first para flexibilidade entre dispositivos.": true,
-  "Implementar dark mode usando variáveis CSS ou recursos de dark mode do Tailwind.": true,
-  "Garantir que as taxas de contraste de cores atendam aos padrões de acessibilidade para legibilidade.": true,
-  "Manter valores de espaçamento consistentes para estabelecer harmonia visual.": true,
-  "Definir variáveis CSS para cores de tema e espaçamento para suportar temas fáceis e manutenibilidade.": true,
-
-  "// Gerenciamento de Estado": true,
-  "// Estado Local": true,
-  "Usar useState para estado no nível do componente.": true,
-  "Implementar useReducer para estado complexo.": true,
-  "Usar useContext para estado compartilhado.": true,
-  "Implementar inicialização de estado adequada.": true,
-
-  "// Estado Global": true,
-  "Usar Redux Toolkit para estado global.": true,
-  "Usar createSlice para definir estado, reducers e actions juntos.": true,
-  "Evitar usar createReducer e createAction, a menos que necessário.": true,
-  "Normalizar a estrutura do estado para evitar dados profundamente aninhados.": true,
-  "Usar seletores para encapsular o acesso ao estado.": true,
-  "Evitar slices grandes e abrangentes; separar as preocupações por recurso.": true,
-
-  "// Tratamento de Erros e Validação": true,
-  "// Validação de Formulários": true,
-  "Usar Zod para validação de schema.": true,
-  "Implementar mensagens de erro adequadas.": true,
-  "Usar bibliotecas de formulário adequadas (por exemplo, React Hook Form).": true,
-
-  "// Limites de Erro": true,
-  "Usar limites de erro para capturar e lidar com erros em árvores de componentes React de forma elegante.": true,
-  "Registrar erros capturados em um serviço externo (por exemplo, Sentry) para rastreamento e depuração.": true,
-  "Projetar UIs de fallback amigáveis para exibir quando ocorrem erros, mantendo os usuários informados sem quebrar o aplicativo.": true,
-
-  "// Testes": true,
-  "// Testes de Unidade": true,
-  "Escrever testes unitários completos para validar funções e componentes individuais.": true,
-  "Usar Jest e React Testing Library para testes confiáveis e eficientes de componentes React.": true,
-  "Seguir padrões como Arrange-Act-Assert para garantir clareza e consistência nos testes.": true,
-  "Simular dependências externas e chamadas de API para isolar testes unitários.": true,
-
-  "// Testes de Integração": true,
-  "Focar nos fluxos de trabalho do usuário para garantir a funcionalidade do aplicativo.": true,
-  "Configurar e desmontar ambientes de teste adequadamente para manter a independência do teste.": true,
-  "Usar testes de snapshot seletivamente para capturar mudanças indesejadas na UI sem depender demais disso.": true,
-  "Aproveitar utilitários de teste (por exemplo, screen em RTL) para testes mais limpos e legíveis.": true,
-
-  "// Acessibilidade (a11y)": true,
-  "// Requisitos Principais": true,
-  "Usar HTML semântico para estrutura significativa.": true,
-  "Aplicar atributos ARIA precisos quando necessário.": true,
-  "Garantir suporte total à navegação por teclado.": true,
-  "Gerenciar a ordem e a visibilidade do foco de forma eficaz.": true,
-  "Manter taxas de contraste de cores acessíveis.": true,
-  "Seguir uma hierarquia de cabeçalho lógica.": true,
-  "Tornar todos os elementos interativos acessíveis.": true,
-  "Fornecer feedback de erro claro e acessível.": true,
-
-  "// Segurança": true,
-  "Implementar sanitização de entrada para evitar ataques XSS.": true,
-  "Usar DOMPurify para sanitizar conteúdo HTML.": true,
-  "Usar métodos de autenticação adequados.": true,
-
-  "// Internacionalização (i18n)": true,
-  "Usar next-i18next para traduções.": true,
-  "Implementar detecção de localidade adequada.": true,
-  "Usar formatação adequada de número e data.": true,
-  "Implementar suporte RTL adequado.": true,
-  "Usar formatação de moeda adequada.": true,
-
-  "// Documentação": true,
-  "Usar JSDoc para documentação.": true,
-  "Documentar todas as funções, classes, métodos e interfaces públicas.": true,
-  "Adicionar exemplos quando apropriado.": true,
-  "Usar frases completas com pontuação adequada.": true,
-  "Manter as descrições claras e concisas.": true,
-  "Usar formatação markdown adequada.": true,
-  "Usar blocos de código adequados.": true,
-  "Usar links adequados.": true,
-  "Usar cabeçalhos adequados.": true,
-  "Usar listas adequadas.": true
-}
+Follow Next.js docs for Data Fetching, Rendering, and Routing.
